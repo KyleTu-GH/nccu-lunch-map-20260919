@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>政大公企中心｜9/19 午餐地圖</title>
+  <meta name="description" content="2026/9/19 政大公企中心 60 分鐘午休用餐地圖，步行約 7 分鐘內。">
+  <style>
+    :root{
+      --bg:#eef5ff;
+      --bg2:#f8fbff;
+      --paper:#ffffff;
+      --ink:#16324f;
+      --muted:#5f7490;
+      --line:#d8e4f1;
+      --blue:#1f5fae;
+      --blue-dark:#174b8a;
+      --blue-soft:#eaf3ff;
+      --sky:#f3f8ff;
+      --gold:#9a6b1b;
+      --gold-soft:#fff5de;
+      --shadow:0 12px 30px rgba(22,50,79,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+      background:linear-gradient(180deg,var(--bg) 0%, var(--bg2) 35%, #ffffff 100%);
+      color:var(--ink);
+    }
+    .wrap{max-width:980px;margin:auto;padding:22px 18px 60px}
+    .hero{
+      background:linear-gradient(135deg,var(--blue-dark) 0%, var(--blue) 100%);
+      color:white;border-radius:30px;padding:30px 28px;
+      box-shadow:var(--shadow);position:relative;overflow:hidden;
+    }
+    .hero:before{
+      content:"";position:absolute;right:-70px;top:-60px;width:220px;height:220px;
+      border-radius:50%;background:rgba(255,255,255,.08);
+    }
+    .hero:after{
+      content:"";position:absolute;right:90px;bottom:-60px;width:150px;height:150px;
+      border-radius:50%;background:rgba(255,255,255,.05);
+    }
+    .eyebrow{font-size:13px;letter-spacing:.13em;opacity:.84;font-weight:700}
+    h1{margin:10px 0 8px;font-size:clamp(30px,7vw,54px);line-height:1.06}
+    .hero p{margin:8px 0 0;color:#e5eefb;line-height:1.75}
+    .hero .date{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+    .pill{
+      display:inline-flex;align-items:center;gap:6px;border-radius:999px;
+      padding:8px 12px;font-size:13px;font-weight:700;background:#fff;color:var(--blue-dark)
+    }
+    .notice{
+      margin:18px 0 22px;background:var(--blue-soft);border:1px solid #cddff7;
+      color:var(--blue-dark);border-radius:18px;padding:16px 18px;line-height:1.7;font-size:14px
+    }
+    .quick{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px
+    }
+    .quick div{
+      background:var(--paper);border:1px solid var(--line);border-radius:18px;
+      padding:15px;text-align:center;box-shadow:0 5px 14px rgba(22,50,79,.03)
+    }
+    .quick b{display:block;font-size:20px;margin-bottom:4px;color:var(--blue-dark)}
+    .quick span{font-size:12px;color:var(--muted)}
+    .section-title{font-size:22px;margin:30px 2px 12px}
+    .section-note{margin:-4px 2px 14px;color:var(--muted);font-size:14px}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .card{
+      background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+      padding:19px;box-shadow:0 6px 18px rgba(22,50,79,.04)
+    }
+    .card.safe{border:2px solid #bfd5f4}
+    .topline{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+    .name{font-size:20px;font-weight:850;margin:8px 0 3px}
+    .type{font-size:13px;color:var(--muted)}
+    .rank{
+      display:inline-flex;align-items:center;border-radius:999px;padding:6px 10px;
+      background:var(--blue-soft);color:var(--blue-dark);font-size:12px;font-weight:800;white-space:nowrap
+    }
+    .rank.mid{background:var(--gold-soft);color:var(--gold)}
+    .meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:16px 0}
+    .meta div{background:var(--sky);border-radius:13px;padding:10px}
+    .meta small{display:block;color:var(--muted);font-size:11px;margin-bottom:3px}
+    .meta b{font-size:14px}
+    .desc{font-size:14px;color:#46617c;line-height:1.68;min-height:50px}
+    .actions{display:flex;gap:8px;margin-top:15px}
+    a.btn{
+      text-decoration:none;text-align:center;flex:1;border-radius:13px;padding:11px 10px;
+      font-size:14px;font-weight:800;border:1px solid var(--blue);color:var(--blue);background:white
+    }
+    a.btn.primary{background:var(--blue);color:white}
+    .rule{
+      background:var(--sky);border:1px solid var(--line);border-radius:22px;padding:18px;margin-top:22px;line-height:1.75
+    }
+    .rule strong{display:block;margin-bottom:4px}
+    footer{
+      margin-top:28px;border-top:1px solid var(--line);padding-top:18px;
+      color:var(--muted);font-size:12px;line-height:1.75
+    }
+    .source-list{margin:8px 0 0;padding-left:18px}
+    .source-list a{color:var(--muted)}
+    @media(max-width:760px){
+      .wrap{padding:14px 12px 42px}
+      .hero{padding:24px 20px;border-radius:24px}
+      .quick{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:1fr}
+      .desc{min-height:0}
+    }
+  </style>
+</head>
+<body>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">NCCU CPBAE · LUNCH MAP</div>
+    <h1>9/19 午餐地圖</h1>
+    <p>政大公企中心出發｜60 分鐘午休｜單程步行約 7 分鐘內</p>
+    <div class="date">
+      <span class="pill">📅 2026/9/19（六）</span>
+      <span class="pill">⏱ 午休 60 分鐘</span>
+      <span class="pill">🚶 單程 7 分鐘內</span>
+      <span class="pill">📍 金華街 187 號</span>
+    </div>
+  </section>
+
+  <div class="notice">
+    <strong>使用方式：</strong>這份地圖是為「只有 60 分鐘午休」設計。建議優先選擇近距離、出餐較快的店；若現場候位超過 5 分鐘，請立即改選其他店。週六永康商圈人潮較多，回程請至少保留 5–10 分鐘。
+  </div>
+
+  <div class="quick">
+    <div><b>7 家</b><span>精選午餐點</span></div>
+    <div><b>≤ 7 分</b><span>建議單程步行</span></div>
+    <div><b>60 分</b><span>完整午休時間</span></div>
+    <div><b>2 區</b><span>核心／延伸選項</span></div>
+  </div>
+
+  <h2 class="section-title">核心選項</h2>
+  <div class="section-note">優先推薦。距離較近，較符合 60 分鐘午休的節奏。</div>
+  <section class="grid">
+
+    <article class="card safe">
+      <div class="topline">
+        <div>
+          <div class="name">JOUR & NUIT 秐朗食堂</div>
+          <div class="type">早午餐・套餐・商業午餐</div>
+        </div>
+        <span class="rank">最穩定</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>0–1 分鐘</b></div>
+        <div><small>週六營業</small><b>07:00–22:00</b></div>
+      </div>
+      <div class="desc">就在政大公企中心 1F。往返時間最少，是 60 分鐘午休最穩定的選擇。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=JOUR%20%26%20NUIT%20%E7%A7%90%E6%9C%97%E9%A3%9F%E5%A0%82">開啟地圖</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.akataipei.com/">店家資訊</a>
+      </div>
+    </article>
+
+    <article class="card safe">
+      <div class="topline">
+        <div>
+          <div class="name">Labu cafe</div>
+          <div class="type">義式・早午餐・咖啡</div>
+        </div>
+        <span class="rank">近距離</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>約 2–3 分鐘</b></div>
+        <div><small>週六午間</small><b>11:30–16:00</b></div>
+      </div>
+      <div class="desc">距離近、餐點選擇多。若現場不用等位，是很實用的午休選項。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Labu%20cafe%20%E5%8F%B0%E5%8C%97">開啟地圖</a>
+      </div>
+    </article>
+
+    <article class="card safe">
+      <div class="topline">
+        <div>
+          <div class="name">金華街咖哩屋 Janny Curry House</div>
+          <div class="type">印度咖哩・簡餐</div>
+        </div>
+        <span class="rank">快速午餐</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>約 4–5 分鐘</b></div>
+        <div><small>週六午間</small><b>11:30–14:30</b></div>
+      </div>
+      <div class="desc">主餐明確，較容易控制用餐節奏。地址為金華街 199 巷 1 弄 4 號。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Janny%20Curry%20House%20Taipei">開啟地圖</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="topline">
+        <div>
+          <div class="name">Muko Brunch</div>
+          <div class="type">早午餐</div>
+        </div>
+        <span class="rank mid">視候位</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>約 4–5 分鐘</b></div>
+        <div><small>週六營業</small><b>09:00–17:00</b></div>
+      </div>
+      <div class="desc">地址為金華街 183 巷 8 號。週六可能有人潮，若候位請直接改選。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Muko%20Brunch%20Taipei">開啟地圖</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="topline">
+        <div>
+          <div class="name">petit doux 微兜 永康店</div>
+          <div class="type">義式・早午餐・甜點</div>
+        </div>
+        <span class="rank mid">較慢食</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>約 3–5 分鐘</b></div>
+        <div><small>週六營業</small><b>11:00–22:00</b></div>
+      </div>
+      <div class="desc">空間舒適，但較適合慢慢吃；建議以「現場有位、能快速點餐」為前提。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=petit%20doux%20%E5%BE%AE%E5%85%9C%20%E6%B0%B8%E5%BA%B7%E5%BA%97">開啟地圖</a>
+        <a class="btn" target="_blank" rel="noopener" href="https://www.petitdoux.com/locations">店家資訊</a>
+      </div>
+    </article>
+
+  </section>
+
+  <h2 class="section-title">延伸選項</h2>
+  <div class="section-note">距離已接近 7 分鐘。若你想吃更有台灣味的午餐，可以考慮，但請留意人潮與時間。</div>
+  <section class="grid">
+
+    <article class="card">
+      <div class="topline">
+        <div>
+          <div class="name">大來小館 金華店</div>
+          <div class="type">台菜・家常菜</div>
+        </div>
+        <span class="rank mid">多人較適合</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>約 5–6 分鐘</b></div>
+        <div><small>週六午間</small><b>11:00–14:00</b></div>
+      </div>
+      <div class="desc">適合 2 人以上一起吃，若是單人午休，可能不如近距離店家有效率。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E4%BE%86%E5%B0%8F%E9%A4%A8%20%E9%87%91%E8%8F%AF%E5%BA%97">開啟地圖</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="topline">
+        <div>
+          <div class="name">東門餃子館</div>
+          <div class="type">水餃・北方麵食</div>
+        </div>
+        <span class="rank mid">想吃台灣味</span>
+      </div>
+      <div class="meta">
+        <div><small>步行</small><b>約 6–7 分鐘</b></div>
+        <div><small>週六午間</small><b>11:00–14:30</b></div>
+      </div>
+      <div class="desc">是很有代表性的麵食選擇，但週六中午的人潮與候位風險也相對較高。</div>
+      <div class="actions">
+        <a class="btn primary" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E6%9D%B1%E9%96%80%E9%A4%83%E5%AD%90%E9%A4%A8">開啟地圖</a>
+      </div>
+    </article>
+
+  </section>
+
+  <section class="rule">
+    <strong>60 分鐘午休判斷原則</strong>
+    單程步行放寬至約 7 分鐘後，選擇會變多，但實際吃飯時間也會更緊。建議到店後若發現候位超過 5 分鐘，就不要猶豫，直接改選。若是團體同行，也建議優先使用核心選項。
+  </section>
+
+  <footer>
+    <strong>資料版本：</strong>2026/9/18 查核，供 2026/9/19（六）午餐使用。這是一份一次性的靜態頁面，不會自動更新；店家仍可能臨時調整營業時間或現場座位狀況。<br>
+    <strong>起點：</strong>政大公企中心，台北市大安區金華街 187 號。
+    <ul class="source-list">
+      <li><a target="_blank" rel="noopener" href="https://www.akataipei.com/">JOUR & NUIT 官方資訊</a></li>
+      <li><a target="_blank" rel="noopener" href="https://www.petitdoux.com/locations">petit doux 官方門市資訊</a></li>
+      <li>其他營業資訊依 2026/9/18 公開店家資料查核整理。</li>
+    </ul>
+  </footer>
+</main>
+</body>
+</html>
